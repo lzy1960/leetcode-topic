@@ -1,0 +1,16 @@
+{
+  "name": "leetcode-topic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@lzy1960/eslint-config": "^0.0.10",
+    "eslint": "^8.23.1"
+  }
+}

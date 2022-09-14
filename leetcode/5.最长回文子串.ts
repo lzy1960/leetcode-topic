@@ -1,8 +1,4 @@
-/**
- * @param {string} s
- * @return {string}
- */
-var longestPalindrome = function (s) {
+function longestPalindrome (s: string): string {
   if (s.length < 2) return s
   let start = 0
   let maxLength = 1

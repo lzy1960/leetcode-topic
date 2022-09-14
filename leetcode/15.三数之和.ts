@@ -1,9 +1,5 @@
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
-var threeSum = function (nums) {
-  const result = []
+function threeSum (nums: number[]): number[][] {
+  const result: number[][] = []
   nums.sort((a, b) => a - b)
 
   for (let i = 0; i < nums.length - 2; i++) {

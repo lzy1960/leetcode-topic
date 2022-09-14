@@ -1,8 +1,4 @@
-/**
- * @param {number[]} height
- * @return {number}
- */
-var maxArea = function (height) {
+function maxArea (height: number[]): number {
   const len = height.length
   let l = 0
   let r = len - 1

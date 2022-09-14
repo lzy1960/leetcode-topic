@@ -1,8 +1,4 @@
-/**
- * @param {string} s
- * @return {number}
- */
-var myAtoi = function (s) {
+function myAtoi (s: string): number {
   const count = parseInt(s)
   if (isNaN(count)) {
     return 0
