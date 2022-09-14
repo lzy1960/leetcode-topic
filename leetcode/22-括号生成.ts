@@ -1,9 +1,5 @@
-/**
- * @param {number} n
- * @return {string[]}
- */
-var generateParenthesis = function (n) {
-  const res = []
+function generateParenthesis (n: number): string[] {
+  const res: string[] = []
   if (n <= 0) {
     return res
   }
@@ -11,7 +7,7 @@ var generateParenthesis = function (n) {
   generate('', n, n)
   return res
 
-  function generate (str, left, right) {
+  function generate (str: string, left: number, right: number) {
     if (left === 0 && right === 0) {
       res.push(str)
       return res
