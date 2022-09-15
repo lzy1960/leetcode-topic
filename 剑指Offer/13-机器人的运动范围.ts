@@ -4,7 +4,7 @@
  * @param {number} k
  * @return {number}
  */
-var movingCount = function (m, n, k) {
+const movingCount = function (m, n, k) {
   // 初始化地图
   const visited = Array(m).fill(0).map(_ => Array(n).fill(false))
 
@@ -27,6 +27,6 @@ var movingCount = function (m, n, k) {
     }
   }
   return dfs(0, 0)
-};
+}
 
 console.log(movingCount(2, 3, 1))

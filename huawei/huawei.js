@@ -61,14 +61,13 @@ console.log(maxLength([1, 2, 3, 4, 2, 1, 1, 1, 1], 6))
  */
 function maxDistance (arr) {
   let maxDis = 0
-  let str = arr.join('')
-  let strList = str.split('1')
-  for (let s of strList) {
+  const str = arr.join('')
+  const strList = str.split('1')
+  for (const s of strList) {
     if (s.length === 0) continue
     if (s.length % 2 === 0) {
       maxDis = Math.max(Math.floor(s.length / 2), maxDis)
-    }
-    else {
+    } else {
       maxDis = Math.max(Math.floor(s.length / 2) + 1, maxDis)
     }
     if (s.charAt(0) === '0') {
@@ -100,10 +99,10 @@ function parseMessage (str) {
       tempStr = ''
 
       while (stack.length) {
-        let value = stack.pop()
+        const value = stack.pop()
         if (/^[a-z]/ig.test(value)) {
           if (count) {
-            let waitStr = tempStr
+            const waitStr = tempStr
             for (let j = 0; j < count - 1; j++) {
               tempStr += waitStr
             }
@@ -118,7 +117,7 @@ function parseMessage (str) {
       }
       // 结束以后在执行一次
       if (count) {
-        let waitStr = tempStr
+        const waitStr = tempStr
         for (let j = 0; j < count - 1; j++) {
           tempStr += waitStr
         }
@@ -149,20 +148,20 @@ console.log(parseMessage('2[m2[b]]'))
  *如果某个字符已全部占用，则不需要再输出
  */
 function stringSum (str) {
-  let [totalStr, usedStr] = str.split('@')
-  let totalMap = new Map(totalStr.split(',').map(item => {
-    let arr = item.split(':')
+  const [totalStr, usedStr] = str.split('@')
+  const totalMap = new Map(totalStr.split(',').map((item) => {
+    const arr = item.split(':')
     arr[1] *= 1
     return arr
   }))
-  let usedMap = new Map(usedStr.split(',').map(item => {
-    let arr = item.split(':')
+  const usedMap = new Map(usedStr.split(',').map((item) => {
+    const arr = item.split(':')
     arr[1] *= 1
     return arr
   }))
 
   // 遍历第一个对象
-  for (let [key, value] of totalMap) {
+  for (const [key, value] of totalMap) {
     totalMap.set(key, value - (usedMap.get(key) || 0))
     if (value >= usedMap.get(key)) {
       usedMap.delete(key)
@@ -172,7 +171,7 @@ function stringSum (str) {
   const totalMapStr = [...totalMap].map(item => item.join(':')).join(',')
   const usedMapStr = [...usedMap].map(item => item.join(':')).join(',')
   if (usedMap.size) {
-    return totalMapStr + '@' + usedMapStr
+    return `${totalMapStr}@${usedMapStr}`
   }
   return totalMapStr
 }
@@ -196,9 +195,9 @@ function arraySum (num, arrStr, count) {
   if (num < count * 2) {
     return -1
   }
-  let arr = arrStr.split(' ').sort((a, b) => a - b)
-  let smallArr = arr.slice(0, count)
-  let bigArr = arr.slice(-2)
+  const arr = arrStr.split(' ').sort((a, b) => a - b)
+  const smallArr = arr.slice(0, count)
+  const bigArr = arr.slice(-2)
 
   const concatArr = [...smallArr, ...bigArr]
   if (concatArr.length !== new Set(concatArr)) {
@@ -227,12 +226,12 @@ console.log('数组求和', arraySum('5', '3 2 3 4 2', '2'))
  */
 
 function crossingArea (s1, s2, s3) {
-  let [x1, y1, w1, h1] = s1.split(' ').map(Number)
-  let [x2, y2, w2, h2] = s2.split(' ').map(Number)
-  let [x3, y3, w3, h3] = s3.split(' ').map(Number)
+  const [x1, y1, w1, h1] = s1.split(' ').map(Number)
+  const [x2, y2, w2, h2] = s2.split(' ').map(Number)
+  const [x3, y3, w3, h3] = s3.split(' ').map(Number)
 
-  let crossWidth = Math.min(x1 + w1, x2 + w2, x3 + w3) - Math.max(x1, x2, x3)
-  let crossHeight = Math.min(y1, y2, y3) - Math.max(y1 - h1, y2 - h2, y3 - h3)
+  const crossWidth = Math.min(x1 + w1, x2 + w2, x3 + w3) - Math.max(x1, x2, x3)
+  const crossHeight = Math.min(y1, y2, y3) - Math.max(y1 - h1, y2 - h2, y3 - h3)
   if (crossWidth < 0 || crossHeight < 0) {
     return 0
   }
@@ -242,12 +241,12 @@ function crossingArea (s1, s2, s3) {
 console.log('矩形相交的面积', crossingArea(
   '1 6 4 4',
   '3 5 3 4',
-  '0 3 7 3'
+  '0 3 7 3',
 ))
 
 function minSwap (data, target) {
   let count = 0
-  let arr = data.split(',').map(num => {
+  const arr = data.split(',').map((num) => {
     if (num > target) {
       count++
       return 1
@@ -275,13 +274,13 @@ console.log('最小交换次数', minSwap('1,3,1,4,0,0,0,3,0,4,4,0,0,4', '2'))
  * 输出一行，为每个任务的打印顺序，打印顺序从0开始，用逗号隔开。
  */
 function printPrinter (str) {
-  let arr = str.split(',')
-  let arr2 = [...arr]
+  const arr = str.split(',')
+  const arr2 = [...arr]
   arr2.sort((a, b) => b - a)
 
-  let indexArr = []
+  const indexArr = []
   for (let i = 0, len = arr.length; i < len; i++) {
-    let index = arr2.indexOf(arr[i])
+    const index = arr2.indexOf(arr[i])
     indexArr[i] = index
     arr2[index] = undefined
   }
@@ -302,13 +301,13 @@ console.log('打印任务排序', printPrinter('9,3,5,5'))
 function squareCount (count, ...args) {
   count = parseInt(count)
   console.log(args)
-  let points = args.map(item => item.split(' ').map(Number))
+  const points = args.map(item => item.split(' ').map(Number))
 
   if (count < 4) return 0
   for (let i = 0; i < count; i++) {
-    let p1 = points[i]
+    const p1 = points[i]
     for (let j = 1; j < count; j++) {
-      let p2 = points[j]
+      const p2 = points[j]
 
     }
   }
@@ -330,10 +329,10 @@ console.log('正方形数量', squareCount('4', '0 0', '1 2', '3 1', '2 -1'))
  */
 
 function maxString (str1, str2, target) {
-  const readline = require('readline');
+  const readline = require('readline')
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
   let linenum = 2
-  let temp = [];
+  const temp = []
   rl.on('line', (line) => {
     if (linenum == 2) {
       temp.push(line)
@@ -351,36 +350,34 @@ function maxString (str1, str2, target) {
       rl.close()
     }
   })
-  // rl.on('close', ()=>{ 
-  // console.log(method(temp)) 
-  // rl.close() 
-  // }) 
+  // rl.on('close', ()=>{
+  // console.log(method(temp))
+  // rl.close()
+  // })
   const method = (arr) => {
-    let [a, b, v] = arr
-    let sum = []
-    for (let i in a) {
+    const [a, b, v] = arr
+    const sum = []
+    for (const i in a) {
       sum.push(Math.abs(a[i].charCodeAt() - b[i].charCodeAt()))
     }
-    for (let i in sum) {
+    for (const i in sum) {
       if (i > 0) {
         sum[i] += sum[i - 1]
       }
     }
     console.log(sum)
-    let p1 = -1, p2 = 0, maxL = 0
+    let p1 = -1; let p2 = 0; let maxL = 0
     let cur = sum[0]
     while (p2 < a.length) {
       if (p1 < 0) {
         cur = sum[p2]
-      }
-      else {
+      } else {
         cur = sum[p2] - sum[p1]
       }
       if (cur <= v) {
         maxL = Math.max(maxL, (p2 - p1))
         p2++
-      }
-      else {
+      } else {
         p1++
       }
     }
@@ -393,7 +390,7 @@ function maxString (str1, str2, target) {
  */
 function parseIpv4 (str) {
   let ipArr = str.split('#')
-  ipArr = ipArr.map(item => {
+  ipArr = ipArr.map((item) => {
     return parseInt(item).toString(2).padStart(8, 0)
   })
   return parseInt(ipArr.join(''), 2)
@@ -405,13 +402,13 @@ console.log('IPv4地址转换', parseIpv4('100#101#1#5'))
  * 计算面积
  */
 
-let [count, endX] = readline().split(' ').map(Number)
+const [count, endX] = readline().split(' ').map(Number)
 
 let total = 0
 let prevX = 0
 let curHeight = 0
 while (line = readline()) {
-  let [x, offsetY] = line.split(' ').map(Number)
+  const [x, offsetY] = line.split(' ').map(Number)
   total += (x - prevX) * Math.abs(curHeight)
   prevX = x
   curHeight += offsetY
@@ -423,53 +420,53 @@ console.log(total)
  * 连续字母的长度
  */
 function checkNumber (str, target) {
-let cur = ''
-// let count = 0
-// let countArr = []
-// let letterArr = []
-let arr = []
+  let cur = ''
+  // let count = 0
+  // let countArr = []
+  // let letterArr = []
+  const arr = []
 
-if (str.length < target) {
-  return -1
-}
-
-for (let i = 0; i < str.length; i++) {
-  let char = str[i]
-  if (cur !== char) {
-    // letterArr.push(char)
-    // count = 1
-    // countArr.push(1)
-    arr.push([char, 1])
-    cur = char
-  } else {
-    // count++
-    // countArr[countArr.length - 1] = count
-    arr[arr.length - 1][1] += 1
+  if (str.length < target) {
+    return -1
   }
-}
 
-// for (let i = 0; i < letterArr.length; i++) {
-//   arr.push([letterArr[i], countArr[i]])
-// }
-arr.sort((a, b) => b[1] - a[1])
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i]
+    if (cur !== char) {
+      // letterArr.push(char)
+      // count = 1
+      // countArr.push(1)
+      arr.push([char, 1])
+      cur = char
+    } else {
+      // count++
+      // countArr[countArr.length - 1] = count
+      arr[arr.length - 1][1] += 1
+    }
+  }
 
-// 开始筛选
-let prev = []
-// let prevCount = 0
-for (let i = 0; i < arr.length; i++) {
-  const item = arr[i]
-  // if (prevCount !== item[1] && !prev.includes(item[0])) {
+  // for (let i = 0; i < letterArr.length; i++) {
+  //   arr.push([letterArr[i], countArr[i]])
   // }
-  if (target === 0) {
-    return item[1]
+  arr.sort((a, b) => b[1] - a[1])
+
+  // 开始筛选
+  const prev = []
+  // let prevCount = 0
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i]
+    // if (prevCount !== item[1] && !prev.includes(item[0])) {
+    // }
+    if (target === 0) {
+      return item[1]
+    }
+    if (!prev.includes(item[0])) {
+      prev.push(item[0])
+    }
+    target--
+    // prevCount = item[1]
   }
-  if (!prev.includes(item[0])) {
-    prev.push(item[0])
-  }
-  target--
-  // prevCount = item[1]
-}
-return -1
+  return -1
 }
 
 
@@ -477,4 +474,3 @@ return -1
 // let target = parseInt(readline())
 
 console.log(checkNumber('AAAABBBBAAABBBAABBAB', 3))
-
