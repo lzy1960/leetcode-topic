@@ -1,10 +1,6 @@
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
-function permute (nums) {
-  const result = []
-  const path = []
+function permute (nums: number[]): number[][] {
+  const result: number[][] = []
+  const path: number[] = []
   backtracking(nums, nums.length, [])
   return result
 

@@ -1,15 +1,6 @@
-export class ListNode {
-  val: number
-  next: ListNode | null
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
-  }
-}
-
 function mergeTwoLists (list1: ListNode | null, list2: ListNode | null): ListNode | null {
   let cur = new ListNode()
-  let dummy = cur
+  const dummy = cur
 
   while (list1 && list2) {
     if (list1.val < list2.val) {
@@ -28,4 +19,4 @@ function mergeTwoLists (list1: ListNode | null, list2: ListNode | null): ListNod
     cur.next = list1
   }
   return dummy.next
-};
+}

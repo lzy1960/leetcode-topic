@@ -5,21 +5,7 @@
  */
 
 // @lc code=start
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
-
-// 自顶向下
-var isBalanced = function (root) {
+function isBalanced (root: TreeNode | null): boolean {
   if (!root) return true
   return Math.abs(depth(root.left) - depth(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right)
 
@@ -27,13 +13,13 @@ var isBalanced = function (root) {
     if (!root) return 0
     return Math.max(depth(root.left), depth(root.right)) + 1
   }
-};
+}
 
 // 自底向上
-var isBalanced = function (root) {
+function isBalanced1 (root: TreeNode | null): boolean {
   return recur(root) !== -1
 
-  function recur (root) {
+  function recur (root: TreeNode | null) {
     if (!root) return 0
     const left = recur(root.left)
     if (left === -1) return -1
@@ -41,5 +27,5 @@ var isBalanced = function (root) {
     if (right === -1) return -1
     return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1
   }
-};
+}
 // @lc code=end

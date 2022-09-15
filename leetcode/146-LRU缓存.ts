@@ -1,39 +1,31 @@
-/**
- * @param {number} capacity
- */
-var LRUCache = function (capacity) {
-  this.capacity = capacity
-  this.cacheList = new Map()
-};
-
-/** 
- * @param {number} key
- * @return {number}
- */
-LRUCache.prototype.get = function (key) {
-  if (this.cacheList.has(key)) {
-    const findVal = this.cacheList.get(key)
-    this.cacheList.delete(key)
-    this.cacheList.set(key, findVal)
-    return findVal
+class LRUCache {
+  capacity: number
+  cacheList: Map<number, number>
+  constructor (capacity: number) {
+    this.capacity = capacity
+    this.cacheList = new Map()
   }
-  return -1
-};
 
-/** 
- * @param {number} key 
- * @param {number} value
- * @return {void}
- */
-LRUCache.prototype.put = function (key, value) {
-  if (this.cacheList.has(key)) {
-    this.cacheList.delete(key)
-  } else if (this.cacheList.size >= this.capacity) {
-    // Map.keys().next() 迭代器，取出的是最早放进去的
-    this.cacheList.delete(this.cacheList.keys().next().value)
+  get (key: number): number {
+    if (this.cacheList.has(key)) {
+      const findVal = this.cacheList.get(key)!
+      this.cacheList.delete(key)
+      this.cacheList.set(key, findVal)
+      return findVal
+    }
+    return -1
   }
-  this.cacheList.set(key, value)
-};
+
+  put (key: number, value: number): void {
+    if (this.cacheList.has(key)) {
+      this.cacheList.delete(key)
+    } else if (this.cacheList.size >= this.capacity) {
+      // Map.keys().next() 迭代器，取出的是最早放进去的
+      this.cacheList.delete(this.cacheList.keys().next().value)
+    }
+    this.cacheList.set(key, value)
+  }
+}
 
 /**
  * Your LRUCache object will be instantiated and called as such:

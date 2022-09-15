@@ -8,8 +8,7 @@ function isValid (s: string): boolean {
   for (const char of s) {
     if (!obj[char] && stack[stack.length - 1] === char) {
       stack.pop()
-    }
-    else {
+    } else {
       stack.push(obj[char])
     }
   }

@@ -4,7 +4,7 @@ function threeSum (nums: number[]): number[][] {
 
   for (let i = 0; i < nums.length - 2; i++) {
     if (i === 0 || nums[i] !== nums[i - 1]) {
-      let start = i + 1, end = nums.length - 1
+      let start = i + 1; let end = nums.length - 1
       while (start < end) {
         if (nums[i] + nums[start] + nums[end] === 0) {
           result.push([nums[i], nums[start], nums[end]])
@@ -25,4 +25,4 @@ function threeSum (nums: number[]): number[][] {
     }
   }
   return result
-};
+}

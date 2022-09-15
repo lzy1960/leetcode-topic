@@ -1,9 +1,4 @@
-/**
- * @param {number[]} gas
- * @param {number[]} cost
- * @return {number}
- */
-var canCompleteCircuit = function (gas, cost) {
+function canCompleteCircuit (gas: number[], cost: number[]): number {
   let totalGas = 0
   let totalCost = 0
   for (let i = 0; i < gas.length; i++) {
@@ -22,4 +17,4 @@ var canCompleteCircuit = function (gas, cost) {
     }
   }
   return start
-};
+}

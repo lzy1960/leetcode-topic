@@ -1,6 +1,6 @@
 function letterCombinations (digits: string): string[] {
   if (digits.length === 0) return []
-  let res: string[] = []
+  const res: string[] = []
   const map: Map<number, string> = new Map()
   map.set(2, 'abc')
   map.set(3, 'def')
@@ -26,6 +26,6 @@ function letterCombinations (digits: string): string[] {
       backTrack(curStr + char, index + 1)
     }
   }
-};
+}
 
 console.log(letterCombinations(''))

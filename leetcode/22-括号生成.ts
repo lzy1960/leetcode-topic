@@ -14,15 +14,15 @@ function generateParenthesis (n: number): string[] {
     }
     if (left === right) {
       // 左 === 右，只能用左括号
-      generate(str + '(', left - 1, right)
+      generate(`${str}(`, left - 1, right)
     } else if (left < right) {
       // 左 < 右，左括号和右括号都能用
       if (left > 0) {
-        generate(str + '(', left - 1, right)
+        generate(`${str}(`, left - 1, right)
       }
-      generate(str + ')', left, right - 1)
+      generate(`${str})`, left, right - 1)
     }
   }
-};
+}
 
 console.log(generateParenthesis(3))

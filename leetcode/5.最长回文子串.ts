@@ -18,4 +18,4 @@ function longestPalindrome (s: string): string {
     expandAroundCenter(i, i + 1)
   }
   return s.substring(start, start + maxLength)
-};
+}

@@ -5,24 +5,12 @@
  */
 
 // @lc code=start
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {string[]}
- */
-var binaryTreePaths = function (root) {
-  const result = []
+function binaryTreePaths (root: TreeNode | null): string[] {
+  const result: string[] = []
   dfs(root, '')
   return result
 
-  function dfs (root, path) {
+  function dfs (root: TreeNode | null, path: string) {
     if (root) {
       path += root.val.toString()
       if (root.left === null && root.right === null) {
@@ -34,5 +22,5 @@ var binaryTreePaths = function (root) {
       }
     }
   }
-};
+}
 // @lc code=end

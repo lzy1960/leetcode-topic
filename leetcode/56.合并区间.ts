@@ -1,8 +1,4 @@
-/**
- * @param {number[][]} intervals
- * @return {number[][]}
- */
-var merge = function (intervals) {
+function merge (intervals: number[][]): number[][] {
   if (intervals.length < 2) return intervals
 
   // 先排序
@@ -12,8 +8,8 @@ var merge = function (intervals) {
   console.log(intervals)
 
   let cur = intervals[0]
-  let result = []
-  for (let interval of intervals) {
+  const result: number[][] = []
+  for (const interval of intervals) {
     if (interval[0] <= cur[1]) {
       cur[1] = Math.max(cur[1], interval[1])
     } else {
@@ -25,4 +21,4 @@ var merge = function (intervals) {
     result.push(cur)
   }
   return result
-};
+}

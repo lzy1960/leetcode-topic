@@ -10,11 +10,11 @@ function convert (s: string, numRows: number): string {
   if (numRows < 2) return s
   const len = s.length
   const t = numRows * 2 - 2 // t表示周期
-  const c = Math.floor((len + t - 1) / t) * (numRows - 1);
+  const c = Math.floor((len + t - 1) / t) * (numRows - 1)
   const mat: string[][] = new Array(numRows).fill(0).map(() => new Array(c).fill(0))
 
   for (let i = 0, x = 0, y = 0; i < len; ++i) {
-    const char = s[i];
+    const char = s[i]
     mat[x][y] = char
     if (i % t + 1 < numRows) {
       ++x // 向下移动
@@ -33,17 +33,17 @@ function convert (s: string, numRows: number): string {
     }
   }
   return result.join('')
-};
+}
 
 // 2. 矩阵优化
-function convert (s: string, numRows: number): string {
+function convert1 (s: string, numRows: number): string {
   if (numRows < 2) return s
   const len = s.length
   const t = numRows * 2 - 2 // t表示周期
   const mat: string[][] = new Array(numRows).fill(0).map(() => ([]))
 
   for (let i = 0, x = 0; i < len; ++i) {
-    const char = s[i];
+    const char = s[i]
     mat[x].push(char)
     if (i % t + 1 < numRows) {
       ++x // 向下移动
@@ -57,29 +57,29 @@ function convert (s: string, numRows: number): string {
     result.push(row.join(''))
   }
   return result.join('')
-};
+}
 
 // 3. 直接构造
 // 0             0+t                    0+2t                     0+3t
 // 1      t-1    1+t            0+2t-1  1+2t            0+3t-1   1+3t
-// 2  t-2        2+t  0+2t-2            2+2t  0+3t-2             2+3t  
+// 2  t-2        2+t  0+2t-2            2+2t  0+3t-2             2+3t
 // 3             3+t                    3+2t                     3+3t
-function convert (s: string, numRows: number): string {
-  const len = s.length;
+function convert2 (s: string, numRows: number): string {
+  const len = s.length
   if (numRows === 1 || numRows >= len) {
-    return s;
+    return s
   }
-  const t = numRows * 2 - 2;
-  const ans: string[] = [];
+  const t = numRows * 2 - 2
+  const ans: string[] = []
   for (let i = 0; i < numRows; i++) { // 枚举矩阵的行
     for (let j = 0; j < len - i; j += t) { // 枚举每个周期的起始下标
-      ans.push(s[j + i]); // 当前周期的第一个字符
+      ans.push(s[j + i]) // 当前周期的第一个字符
       if (0 < i && i < numRows - 1 && j + t - i < len) {
-        ans.push(s[j + t - i]); // 当前周期的第二个字符
+        ans.push(s[j + t - i]) // 当前周期的第二个字符
       }
     }
   }
-  return ans.join('');
-};
+  return ans.join('')
+}
 
 console.log(convert('PAYPALISHIRING', 3))

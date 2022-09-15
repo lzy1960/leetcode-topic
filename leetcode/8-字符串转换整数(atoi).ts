@@ -9,4 +9,4 @@ function myAtoi (s: string): number {
   } else {
     return count
   }
-};
+}

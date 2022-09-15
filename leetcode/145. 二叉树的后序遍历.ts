@@ -10,14 +10,14 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
- var postorderTraversal = function (root) {
-  const result = []
+function postorderTraversal (root: TreeNode | null): number[] {
+  const result: number[] = []
   read(root)
-  function read (node) {
+  function read (node: typeof root): (typeof root)[] {
     if (!root) return []
     if (node.left) read(node.left)
     if (node.right) read(node.right)
     result.push(node.val)
   }
   return result
-};
+}

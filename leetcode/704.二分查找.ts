@@ -1,15 +1,10 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var search = function (nums, target) {
+function search (nums: number[], target: number): number {
   if (!nums.length) return -1
   let low = 0
   let high = nums.length - 1
   while (low <= high) {
-    let mid = Math.floor((high - low) / 2) + low
-    let num = nums[mid]
+    const mid = Math.floor((high - low) / 2) + low
+    const num = nums[mid]
     if (num === target) {
       return mid
     } else if (num < target) {
@@ -19,4 +14,4 @@ var search = function (nums, target) {
     }
   }
   return -1
-};
+}

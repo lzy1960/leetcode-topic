@@ -1,8 +1,4 @@
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-var canJump = function (nums) {
+function canJump (nums: number[]): boolean {
   const totalLength = nums.length
   const memo = Array(totalLength).fill(0)
   // dp
@@ -24,11 +20,11 @@ var canJump = function (nums) {
     return false
   }
 
-  let result = jump(0)
+  const result = jump(0)
   return result
-};
+}
 
-var canJump1 = function (nums) {
+function canJump1 (nums: number[]): boolean {
   const totalLength = nums.length
   const memo = Array(totalLength).fill(0)
   memo[totalLength - 1] = 1
@@ -47,10 +43,10 @@ var canJump1 = function (nums) {
   } else {
     return false
   }
-};
+}
 
 // 贪心
-var canJump1 = function (nums) {
+function canJump2 (nums: number[]): boolean {
   let maxJump = nums.length - 1
   for (let i = nums.length - 2; i >= 0; i--) {
     if (i + nums[i] >= maxJump) {
@@ -58,4 +54,6 @@ var canJump1 = function (nums) {
     }
   }
   return maxJump === 0
-};
+}
+
+console.log(canJump([1, 2, 3]))
